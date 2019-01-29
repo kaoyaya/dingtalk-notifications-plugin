@@ -63,7 +63,7 @@ public class Notifier extends hudson.tasks.Notifier {
     }
 
     public DingdingService newDingdingService(AbstractBuild build, TaskListener listener) {
-        return new DingdingServiceImpl(jenkinsURL, accessToken, onStart, onSuccess, onFailed, onAbort, listener, build);
+        return new DingtalkPush(jenkinsURL, accessToken, listener, build);
     }
 
     @Override

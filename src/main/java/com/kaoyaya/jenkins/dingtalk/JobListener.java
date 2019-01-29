@@ -1,16 +1,17 @@
 package com.kaoyaya.jenkins.dingtalk;
 
 import hudson.Extension;
-import hudson.model.*;
+import hudson.model.AbstractBuild;
+import hudson.model.Descriptor;
+import hudson.model.Result;
+import hudson.model.TaskListener;
 import hudson.model.listeners.RunListener;
 import hudson.tasks.Publisher;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.Map;
 
-/**
- * Created by Marvin on 16/10/7.
- */
 @Extension
 public class JobListener extends RunListener<AbstractBuild> {
 
@@ -21,11 +22,6 @@ public class JobListener extends RunListener<AbstractBuild> {
 
     @Override
     public void onStarted(AbstractBuild r, TaskListener listener) {
-
-//        Cause.UserIdCause userIdCause = (Cause.UserIdCause) r.getCause(Cause.UserCause.class);
-        // 获取
-        User user = User.getById("null", false);
-        System.out.println(user.getDescription());
         getService(r, listener).start();
     }
 
