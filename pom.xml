@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.kaoyaya.jenkins</groupId>
     <artifactId>dingtalk-notifications</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>hpi</packaging>
     <properties>
         <jenkins.version>2.7.3</jenkins.version>
@@ -43,4 +43,11 @@
             <url>https://repo.jenkins-ci.org/public/</url>
         </pluginRepository>
     </pluginRepositories>
+    <dependencies>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>generic-webhook-trigger</artifactId>
+            <version>1.52</version>
+        </dependency>
+    </dependencies>
 </project>

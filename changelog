@@ -4,3 +4,8 @@
 
 1. 拥有完整通知功能
 2. 添加 at 提醒功能(at 触发有两种，一种是触发构建的人，一种是这次构建中有代码提交的人，at 的手机号放在 jenkins 用户的 Description 里面)
+
+## [1.1]
+
+1. webhook 触发构建，构建开始通知也会 at 用户(前提是 configure > Build Triggers > Post content parameters 中必须添加用户 email 变量，
+    也就是 git 提交的用户的邮箱)
