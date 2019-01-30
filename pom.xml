@@ -15,7 +15,7 @@
         <jenkins.version>2.7.3</jenkins.version>
         <java.level>7</java.level>
     </properties>
-    <name>Dingtalk Notifications Plugin</name>
+    <name>Dingtalk Notifications</name>
     <description>钉钉通知</description>
     <licenses>
         <license>
