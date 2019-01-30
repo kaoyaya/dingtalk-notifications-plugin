@@ -30,22 +30,56 @@ public class DingtalkPush implements DingdingService {
 
     @Override
     public void start() {
-        sendTextMessage(Utils.getUserDescription(this.build), "部署开始");
+        String text = String.format("\uD83D\uDD04 【%s%s】 开始构建\n%s",
+                build.getProject().getDisplayName(),
+                build.getDisplayName(),
+                getBuildUrl()
+        );
+        sendTextMessage(Utils.getUserDescription(this.build), text);
     }
 
     @Override
     public void success() {
-        sendTextMessage(Utils.getUserDescription(this.build), "部署成功");
+        String text = String.format("[对勾] 【%s%s】 构建成功\nsummary: %s,duration: %s\n%s",
+                build.getProject().getDisplayName(),
+                build.getDisplayName(),
+                build.getBuildStatusSummary().message,
+                build.getDurationString(),
+                getBuildUrl()
+        );
+        sendTextMessage(Utils.getUserDescription(this.build), text);
     }
 
     @Override
     public void failed() {
-        sendTextMessage(Utils.getUserDescription(this.build), "部署失败");
+        String text = String.format("❌ 【%s%s】 构建失败\nsummary: %s,duration: %s\n%s",
+                build.getProject().getDisplayName(),
+                build.getDisplayName(),
+                build.getBuildStatusSummary().message,
+                build.getDurationString(),
+                getBuildUrl()
+        );
+        sendTextMessage(Utils.getUserDescription(this.build), text);
     }
 
     @Override
     public void abort() {
-        sendTextMessage(Utils.getUserDescription(this.build), "部署终止");
+        String text = String.format("⛔ 【%s%s】 构建终止\nsummary: %s,duration: %s\n%s",
+                build.getProject().getDisplayName(),
+                build.getDisplayName(),
+                build.getBuildStatusSummary().message,
+                build.getDurationString(),
+                getBuildUrl()
+        );
+        sendTextMessage(Utils.getUserDescription(this.build), text);
+    }
+
+    private String getBuildUrl() {
+        if (jenkinsURL.endsWith("/")) {
+            return jenkinsURL + build.getUrl();
+        } else {
+            return jenkinsURL + "/" + build.getUrl();
+        }
     }
 
     public void sendTextMessage(List<String> atMobiles, String text) {
