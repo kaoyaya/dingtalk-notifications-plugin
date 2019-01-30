@@ -17,6 +17,6 @@ node {
       }
    }
    stage('Results') {
-      archive 'target/*.hpi'
+      archiveArtifacts 'target/*.hpi'
    }
 }
